@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+  
+    <ion-buttons slot="end">
+      <ion-button (click)="scanlista()">
+        <ion-icon name="sync-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>   
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon (click)="presentAlert()"  name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>   
+    <ion-title >
+      WIFIXX
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+
+  <div *ngIf="ScanIni" class=" ion-text-center" style="margin-top: 20%;">
+    <p style="color: #8c8c8c;">Pulsa <ion-icon name="sync-outline"></ion-icon> para empezar con el escaneo <br> de redes WiFi.</p>  
+  </div>
+
+  <div>
+    
+    <div  *ngFor="let item of options">
+      <!-- <ion-item>{{item.SSID}}</ion-item> -->
+      <ion-item style="--background: #b2f8c4;">
+        <ion-row  slot="start">
+          <ion-col size="12">
+            <div class="ion-text-center"><ion-icon name="lock-closed"></ion-icon></div>
+            <ion-label>Wpa2</ion-label>
+          </ion-col>   
+        </ion-row>
+       <ion-row style="margin-left: 10%;">
+         <ion-col  class="ion-text-center"  size="12">
+         
+            <ion-label class="ion-text-center">{{item.SSID}}</ion-label>
+            <ion-label class="ion-text-center">{{item.BSSID}}</ion-label>
+          
+         </ion-col>
+       </ion-row>
+      
+        <ion-row slot="end">
+          <ion-col size="12">
+            <div class="ion-text-center"><ion-icon name="radio"></ion-icon></div>
+            <ion-label>{{item.level}}</ion-label>
+          </ion-col>   
+        </ion-row>
+       </ion-item>      
+    </div>
+  </div>
+</ion-content>
